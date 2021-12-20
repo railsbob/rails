@@ -1009,7 +1009,8 @@ module ActionMailer
           responses.each { |r| insert_part(container, r, m.charset) }
           m.add_part(container)
         else
-          responses.each { |r| insert_part(m, r, m.charset) }
+          charset = m.charset.dup
+          responses.each { |r| insert_part(m, r, charset) }
         end
       end
 
